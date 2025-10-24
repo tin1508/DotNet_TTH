@@ -1,0 +1,14 @@
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\bin\Debug\net8.0\AnimalManagement.exe
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\bin\Debug\net8.0\AnimalManagement.deps.json
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\bin\Debug\net8.0\AnimalManagement.runtimeconfig.json
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\bin\Debug\net8.0\AnimalManagement.dll
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\bin\Debug\net8.0\AnimalManagement.pdb
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.GeneratedMSBuildEditorConfig.editorconfig
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.AssemblyInfoInputs.cache
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.AssemblyInfo.cs
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.csproj.CoreCompileInputs.cache
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.dll
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\refint\AnimalManagement.dll
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.pdb
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.genruntimeconfig.cache
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\ref\AnimalManagement.dll
