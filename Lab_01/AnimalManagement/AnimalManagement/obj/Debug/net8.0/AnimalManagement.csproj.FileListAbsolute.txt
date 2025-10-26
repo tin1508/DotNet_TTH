@@ -12,3 +12,4 @@ D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\ref
 D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.pdb
 D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.genruntimeconfig.cache
 D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\ref\AnimalManagement.dll
+D:\Net_Programming\Lab_01\AnimalManagement\AnimalManagement\obj\Debug\net8.0\AnimalManagement.sourcelink.json

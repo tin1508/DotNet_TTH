@@ -1,4 +1,6 @@
-﻿using System;
+﻿//23110156-Nguyễn Minh Hoàng
+using System;
+using System.Runtime.InteropServices;
 using MainData;
 
 namespace AnimalManagement
@@ -44,8 +46,10 @@ namespace MainData
     {
         protected string name;
         protected int age;
-        protected double height, weight; //weight tính theo đơn vị kg
-        public Animal() { }
+        protected double height, weight; //weight tính theo đơn vị kg, height tính theo đơn vị cm
+        public Animal() {
+            this.name = "";
+        }
         public Animal(string name, int age, double height, double weight)
         {
             this.name = name;
@@ -53,14 +57,79 @@ namespace MainData
             this.height = height;
             this.weight = weight;
         }
-        public abstract void InputInfo();
-        public abstract void DisplayInfo();
-        public abstract void InputAge();
-        public abstract void InputHeight();
-        public abstract void InputWeight();
+        public virtual void InputInfo()
+        {
+            Console.Write("Input {0} name: ", GetType().Name);
+            name = Console.ReadLine();
+            InputAge();
+            InputHeight();
+            InputWeight();
+        }
+        public virtual void DisplayInfo()
+        {
+            Console.WriteLine("{0} Name = {1}, Age = {2}, " +
+                "Height = {3} (cm), Weight = {4} (kg)", GetType().Name, name, age, height, weight);
+        }
+        public virtual void InputAge()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Input {0} Age: ", GetType().Name);
+                    string strAge = Console.ReadLine();
+                    age = int.Parse(strAge);
+                    if (age <= 0 || age > 20) throw new InvalidNumException("Age must be between 1 and 20.");
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Not input a Number. Please reinput a number!");
+                }
+                catch (InvalidNumException e)
+                {
+                    Console.WriteLine("Invalid Number: {0}", e.Message);
+                }
+            }
+        }
+        //bắt lỗi khi người dùng nhập chuỗi kí tự thay vì số cho height và weight
+        public virtual void InputHeight()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Input {0} height (cm): ", GetType().Name);
+                    string strHeight = Console.ReadLine();
+                    height = double.Parse(strHeight);
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Not input a Number. Please reinput a number!");
+                }
+            }
+        }
+        public virtual void InputWeight()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Input {0} weight (kg): ", GetType().Name);
+                    string strWeight = Console.ReadLine();
+                    weight = double.Parse(strWeight);
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Not input a Number. Please reinput a number!");
+                }
+            }
+        }
         public override string ToString()
         {
-            return "name = " + this.name + ", Age = " + this.age
+            return GetType().Name +  " name = " + this.name + ", Age = " + this.age
                     + ", Height = (cm)" + this.height + ", Weight = (kg)" + this.weight + "\n";
         }
        
@@ -71,155 +140,12 @@ namespace MainData
         public Dog() : base() { }
         public Dog(string name, int age, int height, double weight) : base(name, age, height, weight) { }
         
-
-        public override void InputInfo()
-        {
-            Console.Write("Input Dog name: ");
-            this.name = Console.ReadLine();
-            InputAge();
-            InputHeight();
-            InputWeight();
-        }
-        public override void InputAge()
-        {
-            while (true)
-            {
-                try
-                {
-                    Console.Write("Input Dog Age: ");
-                    age = int.Parse(Console.ReadLine());
-                    if (age <= 0 || age > 20) throw new InvalidNumException("Age must be between 1 and 20.");
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Not input a Number. Please reinput a number!");
-                }
-                catch (InvalidNumException e)
-                {
-                    Console.WriteLine("Invalid Number: {0}", e.Message);
-                }
-            }
-        }
-        //d. Bắt lỗi khi người dùng nhập chuỗi hay ký tự (không phải số) các thông tin Height và Weight 
-        public override void InputHeight()
-        {
-            while (true)
-            {
-                try
-                {
-                    Console.Write("Input Dog height (cm): ");
-                    height = int.Parse(Console.ReadLine());
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Not input a Number. Please reinput a number!");
-                }
-            }
-        }
-        public override void InputWeight()
-        {
-            while (true)
-            {
-                try
-                {
-                    Console.Write("Input Dog weight (kg): ");
-                    weight = int.Parse(Console.ReadLine());
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Not input a Number. Please reinput a number!");
-                }
-            }
-        }
-        public override void DisplayInfo()
-        {
-            Console.WriteLine("Dog Name = {0}, Age = {1}, " +
-                "Height = {2} (cm), Weight = {3} (kg)", name, age, height, weight);
-        }
-        public override string ToString()
-        {
-            return "Dog " + base.ToString();
-        }
     }
 
     public class Cat : Animal
     {
         public Cat() : base() { }
         public Cat(string name, int age, int height, double weight) : base(name, age, height, weight) { }
-        public override void InputInfo()
-        {
-            Console.Write("Input Cat name: ");
-            this.name = Console.ReadLine();
-            InputAge();
-            InputHeight();
-            InputWeight();
-        }
-        public override void InputAge()
-        {
-            while (true)
-            {
-                try
-                {
-                    Console.Write("Input Cat Age: ");
-                    age = int.Parse(Console.ReadLine());
-                    if (age <= 0 || age > 20) throw new InvalidNumException("Age must be between 1 and 20.");
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Not input a Number. Please reinput a number!");
-                }
-                catch (InvalidNumException e)
-                {
-                    Console.WriteLine("Invalid Number: {0}", e.Message);
-                }
-            }
-        }
-        //d. Bắt lỗi khi người dùng nhập chuỗi hay ký tự (không phải số) các thông tin Height và Weight 
-        public override void InputHeight()
-        {
-            while (true)
-            {
-                try
-                {
-                    Console.Write("Input Cat height (cm): ");
-                    height = int.Parse(Console.ReadLine());
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Not input a Number. Please reinput a number!");
-                }
-            }
-        }
-        public override void InputWeight()
-        {
-            while (true)
-            {
-                try
-                {
-                    Console.Write("Input Cat weight (kg): ");
-                    weight = int.Parse(Console.ReadLine());
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Not input a Number. Please reinput a number!");
-                }
-            }
-        }
-        public override void DisplayInfo()
-        {
-            Console.WriteLine("Cat Name = {0}, Age = {1}, " +
-                "Height = {2} (cm), Weight = {3} (kg)", name, age, height, weight);
-        }
-        public override string ToString()
-        {
-            return "Cat " + base.ToString();
-        }
+
     }
-    
 }
