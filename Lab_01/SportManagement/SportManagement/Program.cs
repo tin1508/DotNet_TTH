@@ -7,18 +7,33 @@ namespace SportManagement
     {
         static void Main(string[] args)
         {
-            //Nhập 3 môn thể thao
-            Sport football = new Football();
-            football.InputInfo();
-            Sport tennis = new Tennis();
-            tennis.InputInfo(); 
-            Sport volleyball = new Volleyball();
-            volleyball.InputInfo();
-
-            //xuất 3 môn thể thao
-            football.DisplayInfo();
-            tennis.DisplayInfo();   
-            volleyball.DisplayInfo();
+            //cho nhập 2 môn bóng đá, 2 tennis và 2 bóng chuyển
+            int nFootball = 2, nTennis = 2, nVolleyball = 2;
+            Sport[] sports = new Sport[nFootball + nTennis + nVolleyball];
+            //nhập và xuất thông tin của các môn thể thao
+            for(int i = 0; i < nFootball; i++)
+            {
+                Sport footBall = new Football();
+                footBall.InputInfo();
+                sports[i] = footBall;
+            }
+            for(int i = 0; i < nTennis; i++)
+            {
+                Sport tennis = new Tennis();
+                tennis.InputInfo();
+                sports[nFootball + i] = tennis;
+            }
+            for(int i = 0; i < nVolleyball; i++)
+            {
+                Sport volleyBall = new Volleyball();
+                volleyBall.InputInfo();
+                sports[nFootball + nTennis + i] = volleyBall;
+            }
+            foreach(Sport s in sports)
+            {
+                s.DisplayInfo();
+            }
+            Console.ReadLine();
         }
     }
 }
@@ -26,6 +41,7 @@ namespace SportManagement
 namespace MainData
 {
     //dùng để bắt lỗi khi nhập quá số người chơi cho phép của môn thể thao
+    //thêm vào đó mỗi môn thể thao thường số lượng người chơi sẽ là số chẵn, vì mỗi bên phải có số người bằng nhau
     public class InvalidNumException : Exception
     {
         public InvalidNumException(string message) : base(message) { }
@@ -84,9 +100,9 @@ namespace MainData
                     Console.Write("Input player quantity: ");
                     string str = Console.ReadLine();
                     playerQuantity = int.Parse(str);
-                    if (playerQuantity <= 0 || playerQuantity > 22) //vì mỗi đội bóng đá có tối đa 11 người
+                    if (playerQuantity <= 0 || playerQuantity > 22 || playerQuantity % 2 != 0) //vì mỗi đội bóng đá có tối đa 11 người
                     {
-                        throw new InvalidNumException("The number of players must be between 1 and 22");
+                        throw new InvalidNumException("The number of players must be between 1 and 22 and it must be even.");
                     }
                     break;
                 }
@@ -99,10 +115,6 @@ namespace MainData
                     Console.WriteLine("Invalid number: {0}", e.Message);
                 }
             }
-        }
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
     public class Tennis : Sport
@@ -124,9 +136,9 @@ namespace MainData
                     Console.Write("Input player quantity: ");
                     string str = Console.ReadLine();
                     playerQuantity = int.Parse(str);
-                    if (playerQuantity <= 0 || playerQuantity > 4) //vì mỗi đội tennish có tối đa 2 người
+                    if (playerQuantity <= 0 || playerQuantity > 4 || playerQuantity % 2 != 0) //vì mỗi đội tennish có tối đa 2 người
                     {
-                        throw new InvalidNumException("The number of players must be between 1 and 4");
+                        throw new InvalidNumException("The number of players must be between 1 and 4 and it must be even.");
                     }
                     break;
                 }
@@ -139,10 +151,6 @@ namespace MainData
                     Console.WriteLine("Invalid number: {0}", e.Message);
                 }
             }
-        }
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
     public class Volleyball : Sport
@@ -164,9 +172,9 @@ namespace MainData
                     Console.Write("Input player quantity: ");
                     string str = Console.ReadLine();
                     playerQuantity = int.Parse(str);
-                    if (playerQuantity <= 0 || playerQuantity > 12) //vì mỗi đội bóng chuyền có tối đa 6 người
+                    if (playerQuantity <= 0 || playerQuantity > 12 || playerQuantity % 2 != 0) //vì mỗi đội bóng chuyền có tối đa 6 người
                     {
-                        throw new InvalidNumException("The number of players must be between 1 and 12");
+                        throw new InvalidNumException("The number of players must be between 1 and 12 and it must be even.");
                     }
                     break;
                 }
@@ -179,10 +187,6 @@ namespace MainData
                     Console.WriteLine("Invalid number: {0}", e.Message);
                 }
             }
-        }
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }

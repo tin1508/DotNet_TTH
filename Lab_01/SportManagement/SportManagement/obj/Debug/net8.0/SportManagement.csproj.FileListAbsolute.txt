@@ -12,3 +12,4 @@ D:\Net_Programming\Lab_01\SportManagement\SportManagement\obj\Debug\net8.0\refin
 D:\Net_Programming\Lab_01\SportManagement\SportManagement\obj\Debug\net8.0\SportManagement.pdb
 D:\Net_Programming\Lab_01\SportManagement\SportManagement\obj\Debug\net8.0\SportManagement.genruntimeconfig.cache
 D:\Net_Programming\Lab_01\SportManagement\SportManagement\obj\Debug\net8.0\ref\SportManagement.dll
+D:\Net_Programming\Lab_01\SportManagement\SportManagement\obj\Debug\net8.0\SportManagement.sourcelink.json

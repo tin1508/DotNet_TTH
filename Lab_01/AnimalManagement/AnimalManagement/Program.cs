@@ -1,5 +1,6 @@
 ﻿//23110156-Nguyễn Minh Hoàng
 using System;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using MainData;
 
@@ -38,9 +39,14 @@ namespace AnimalManagement
 namespace MainData
 {
     //c.bắt lỗi khi nhập tuổi âm hoặc lớn hơn 20
-    public class InvalidNumException: Exception
+    public class InvalidNumException : Exception
     {
         public InvalidNumException(string message) : base(message) { }
+    }
+    //tính năng thêm: bắt lỗi khi người dùng nhập vào tên không phải là chữ cái
+    public class InvalidName : Exception
+    {
+        public InvalidName(string message) : base(message) { }
     }
     public abstract class Animal
     {
@@ -59,8 +65,7 @@ namespace MainData
         }
         public virtual void InputInfo()
         {
-            Console.Write("Input {0} name: ", GetType().Name);
-            name = Console.ReadLine();
+            InputName();
             InputAge();
             InputHeight();
             InputWeight();
@@ -69,6 +74,23 @@ namespace MainData
         {
             Console.WriteLine("{0} Name = {1}, Age = {2}, " +
                 "Height = {3} (cm), Weight = {4} (kg)", GetType().Name, name, age, height, weight);
+        }
+        public virtual void InputName()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Input {0} Name: ", GetType().Name);
+                    name = Console.ReadLine();
+                    if (!name.All(char.IsLetter)) throw new InvalidName("Name must contain only letters!!!");
+                    break;
+                }
+                catch (InvalidName e)
+                {
+                    Console.WriteLine("Invalid name, please reinput name: {0}", e.Message);
+                }
+            }
         }
         public virtual void InputAge()
         {
